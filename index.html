@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لقّاح — اكتشاف عملاء المواقع</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C2430;
+    --ink-soft:#4A5568;
+    --paper:#F5F4F0;
+    --panel:#FFFFFF;
+    --line:#E3E1DA;
+    --gold:#B8862E;
+    --gold-bg:#FBF3E3;
+    --teal:#2C6E63;
+    --teal-bg:#E6F2EF;
+    --rust:#A8461F;
+    --rust-bg:#FBEAE2;
+    --hot:#9C3A26;
+    --hot-bg:#F8E7DF;
+    --warm:#B8862E;
+    --warm-bg:#FBF3E3;
+    --cold:#5B6472;
+    --cold-bg:#EDECE8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans Arabic','Cairo',sans-serif;
+    line-height:1.6;
+  }
+
+  .wrap{max-width:920px;margin:0 auto;padding:28px 20px 80px;}
+
+  header.top{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    padding-bottom:22px;
+    margin-bottom:26px;
+    border-bottom:1px solid var(--line);
+  }
+  header.top .brand{
+    font-family:'Cairo',sans-serif;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:-0.3px;
+  }
+  header.top .brand span{color:var(--gold);}
+  header.top .tag{font-size:13px;color:var(--ink-soft);}
+
+  .free-badge {
+    background: #E6F2EF;
+    border: 1px solid #B2DFDB;
+    color: #2C6E63;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .search-panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:22px;
+    margin-bottom:34px;
+  }
+  .search-panel h1{
+    font-family:'Cairo',sans-serif;
+    font-size:19px;
+    font-weight:700;
+    margin:0 0 4px;
+  }
+  .search-panel p.sub{
+    margin:0 0 18px;
+    color:var(--ink-soft);
+    font-size:14px;
+  }
+  .fields{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+  }
+  @media (max-width:720px){ .fields{grid-template-columns:1fr 1fr;} }
+  .field label{
+    display:block;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .field select, .field input{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:var(--paper);
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .search-actions{
+    margin-top:18px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  button.run{
+    background:var(--ink);
+    color:#fff;
+    border:none;
+    padding:11px 22px;
+    border-radius:3px;
+    font-family:'Cairo',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    cursor:pointer;
+  }
+  button.run:hover{background:#000;}
+  button.run:disabled{background:#A0AEC0; cursor:not-allowed;}
+  .search-actions .hint{font-size:12.5px;color:var(--ink-soft);}
+
+  .results-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:16px;
+  }
+  .results-head h2{
+    font-family:'Cairo',sans-serif;
+    font-size:16px;
+    font-weight:700;
+    margin:0;
+  }
+  .results-head .count{font-size:13px;color:var(--ink-soft);}
+  .sort-row{font-size:13px;color:var(--ink-soft);margin-bottom:22px;}
+  .sort-row select{
+    border:none;
+    background:transparent;
+    font-family:inherit;
+    font-size:13px;
+    color:var(--ink);
+    font-weight:600;
+    border-bottom:1px dashed var(--ink-soft);
+    padding:0 2px 1px;
+    cursor:pointer;
+  }
+
+  .lead{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:18px 20px;
+    margin-bottom:12px;
+    display:grid;
+    grid-template-columns:76px 1fr;
+    gap:18px;
+  }
+  @media (max-width:600px){ .lead{grid-template-columns:1fr;} }
+
+  .score-col{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    gap:6px;
+    padding-top:2px;
+  }
+  .score-num{
+    font-family:'Cairo',sans-serif;
+    font-weight:800;
+    font-size:26px;
+    line-height:1;
+  }
+  .score-max{font-size:11px;color:var(--ink-soft);}
+  .tier-badge{
+    font-size:11px;
+    font-weight:700;
+    padding:3px 9px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .tier-hot .score-num{color:var(--hot);}
+  .tier-hot .tier-badge{background:var(--hot-bg);color:var(--hot);}
+  .tier-warm .score-num{color:var(--warm);}
+  .tier-warm .tier-badge{background:var(--warm-bg);color:var(--warm);}
+  .tier-cold .score-num{color:var(--cold);}
+  .tier-cold .tier-badge{background:var(--cold-bg);color:var(--cold);}
+
+  .lead-body h3{
+    font-family:'Cairo',sans-serif;
+    font-size:16.5px;
+    font-weight:700;
+    margin:0 0 6px;
+  }
+  .meta-line{
+    font-size:13px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+  }
+
+  .signals{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-bottom:12px;
+  }
+  .sig{
+    font-size:12px;
+    padding:4px 10px;
+    border-radius:20px;
+    border:1px solid transparent;
+    text-decoration:none;
+  }
+  .sig.pos{background:var(--teal-bg);color:var(--teal);}
+  .sig.neg{background:var(--rust-bg);color:var(--rust);}
+  .sig.neu{background:var(--cold-bg);color:var(--cold);}
+  .sig.action{background:var(--gold-bg);color:var(--gold);font-weight:600;}
+
+  .why{
+    font-size:13px;
+    color:var(--ink-soft);
+    border-right:2px solid var(--line);
+    padding-right:12px;
+  }
+  .why b{color:var(--ink);font-weight:600;}
+
+  .status-message{
+    text-align:center;
+    padding:40px;
+    background:var(--panel);
+    border:1px dashed var(--line);
+    color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">لقّاح<span>.</span></div>
+    <div class="tag">النسخة المجانية — GitHub Pages</div>
+  </header>
+
+  <div class="free-badge">
+    🎉 <b>وضع التشغيل المباشر:</b> الربط جاري عبر بروكسي مرن لتفادي مشاكل الأمان المتصفحية.
+  </div>
+
+  <div class="search-panel">
+    <h1>ابحث عن عملاء حقيقيين الآن</h1>
+    <p class="sub">حدد النشاط والمدينة لجلب البيانات وتحليل قدرة الفرصة بذكاء.</p>
+    <div class="fields">
+      <div class="field" style="grid-column: span 2;">
+        <label>SerpAPI Key (مُفعل تلقائياً)</label>
+        <input type="text" id="f-apikey" value="8b9ccfb9e8797679118b08b583bd467a75ca7eefb4d47848b15e04e821c8083c">
+      </div>
+      <div class="field">
+        <label>المدينة</label>
+        <select id="f-city">
+          <option value="جدة">جدة</option>
+          <option value="الرياض">الرياض</option>
+          <option value="الدمام">الدمام</option>
+          <option value="مكة">مكة</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>النشاط التجاري</label>
+        <input type="text" id="f-business" value="حلويات">
+      </div>
+    </div>
+    <div class="search-actions">
+      <button class="run" id="search-btn" onclick="runSearch()">بحث واستخراج الأنشطة</button>
+      <span class="hint" id="search-status">جاهز للبدء</span>
+    </div>
+  </div>
+
+  <div class="results-head">
+    <h2>النتائج المباشرة</h2>
+    <span class="count" id="result-count">0 نشاط تم تحليله</span>
+  </div>
+  <div class="sort-row">
+    الترتيب:
+    <select id="sort-select" onchange="render()">
+      <option value="score-desc">الأعلى فرصة أولاً</option>
+      <option value="score-asc">الأقل فرصة أولاً</option>
+      <option value="reviews-desc">الأكثر مراجعات</option>
+    </select>
+  </div>
+
+  <div id="results">
+    <div class="status-message">اضغط على زر "بحث واستخراج الأنشطة" للبدء مباشرة.</div>
+  </div>
+
+</div>
+
+<script>
+  let fetchedBusinesses = [];
+
+  async function fetchFromSerpApi(apiKey, query) {
+    const targetUrl = `https://serpapi.com/search.json?engine=google_maps&q=${encodeURIComponent(query)}&hl=ar&api_key=${apiKey}`;
+    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+    
+    const response = await fetch(proxyUrl);
+
+    if (!response.ok) {
+      throw new Error('فشل جلب البيانات. تأكد من صحة الـ API Key الخاص بك.');
+    }
+
+    const data = await response.json();
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    return data.local_results || [];
+  }
+
+  function calculateScore(place) {
+    let score = 0;
+    const reasons = [];
+
+    const hasWeb = Boolean(place.website);
+    const reviews = place.reviews || 0;
+    const rating = place.rating || 0;
+
+    // 1. التقييم بناءً على الموقع
+    if (!hasWeb) {
+      score += 45;
+      reasons.push({ t: "لا يوجد موقع إلكتروني مسجل", pos: true });
+    } else {
+      const isSocial = /instagram|facebook|twitter|tiktok|wa\.me/i.test(place.website);
+      if (isSocial) {
+        score += 35;
+        reasons.push({ t: "الموقع المسجل هو صفحة سوشيال ميديا", pos: true });
+      } else {
+        reasons.push({ t: "لديه موقع إلكتروني بالفعل", pos: false });
+      }
+    }
+
+    // 2. التقييم بناءً على حركة العملاء والمراجعات
+    if (reviews > 1000) {
+      score += 30;
+      reasons.push({ t: reviews.toLocaleString() + " مراجعة (إقبال ضخم)", pos: true });
+    } else if (reviews > 250) {
+      score += 20;
+      reasons.push({ t: reviews.toLocaleString() + " مراجعة (نشاط نشط)", pos: true });
+    } else if (reviews > 30) {
+      score += 10;
+      reasons.push({ t: reviews.toLocaleString() + " مراجعة", pos: null });
+    } else {
+      reasons.push({ t: reviews + " مراجعة فقط", pos: false });
+    }
+
+    // 3. تقييم جودة الخدمات
+    if (rating >= 4.0) {
+      score += 15;
+      reasons.push({ t: "تقييم عالي " + rating + "⭐", pos: true });
+    }
+
+    // 4. توفر الهاتف
+    if (place.phone) {
+      score += 10;
+      reasons.push({ t: "رقم الهاتف متوفر", pos: true });
+    }
+
+    return { score: Math.min(score, 100), reasons };
+  }
+
+  function tierOf(score) {
+    if (score >= 65) return { cls: "tier-hot", label: "فرصة قوية جداً" };
+    if (score >= 40) return { cls: "tier-warm", label: "فرصة متوسطة" };
+    return { cls: "tier-cold", label: "فرصة ضعيفة" };
+  }
+
+  async function runSearch() {
+    const apiKey = document.getElementById('f-apikey').value.trim();
+    const city = document.getElementById('f-city').value;
+    const biz = document.getElementById('f-business').value.trim();
+    const statusText = document.getElementById('search-status');
+    const searchBtn = document.getElementById('search-btn');
+
+    if (!apiKey) {
+      alert('يرجى وضع المفتاح المجاني من SerpAPI أولاً');
+      return;
+    }
+
+    searchBtn.disabled = true;
+    statusText.textContent = 'جاري البحث في خرائط Google...';
+    document.getElementById('results').innerHTML = `<div class="status-message">جاري استخراج وتحليل الأنشطة...</div>`;
+
+    try {
+      const searchQuery = `${biz} في ${city}`;
+      const places = await fetchFromSerpApi(apiKey, searchQuery);
+
+      fetchedBusinesses = places.map(p => ({
+        name: p.title || 'بدون اسم',
+        city: p.address || city,
+        rating: p.rating || 0,
+        reviews: p.reviews || 0,
+        website: p.website,
+        phone: p.phone,
+        type: p.type,
+        ...calculateScore(p)
+      }));
+
+      statusText.textContent = 'تم استخراج البيانات بنجاح!';
+      render();
+    } catch (err) {
+      alert('خطأ: ' + err.message);
+      statusText.textContent = 'فشل البحث';
+      document.getElementById('results').innerHTML = `<div class="status-message" style="color:var(--rust);">خطأ: ${err.message}</div>`;
+    } finally {
+      searchBtn.disabled = false;
+    }
+  }
+
+  function render() {
+    const sort = document.getElementById('sort-select').value;
+    let scored = [...fetchedBusinesses];
+
+    if (sort === "score-desc") scored.sort((a, b) => b.score - a.score);
+    if (sort === "score-asc") scored.sort((a, b) => a.score - b.score);
+    if (sort === "reviews-desc") scored.sort((a, b) => b.reviews - a.reviews);
+
+    document.getElementById('result-count').textContent = scored.length + " نشاط تم تحليله";
+
+    const container = document.getElementById('results');
+
+    if (scored.length === 0) {
+      container.innerHTML = `<div class="status-message">لم نجد نتائج مطابقة لمُدخلاتك.</div>`;
+      return;
+    }
+
+    container.innerHTML = scored.map(b => {
+      const tier = tierOf(b.score);
+      const topReasons = b.reasons.slice(0, 5);
+      const whyText = b.reasons.filter(r => r.pos === true).map(r => r.t).join("، ");
+
+      return `
+        <div class="lead ${tier.cls}">
+          <div class="score-col">
+            <div class="score-num">${b.score}</div>
+            <div class="score-max">من 100</div>
+            <div class="tier-badge">${tier.label}</div>
+          </div>
+          <div class="lead-body">
+            <h3>${b.name}</h3>
+            <div class="meta-line">
+              <span>📍 ${b.city}</span>
+              <span>⭐ ${b.rating}</span>
+              <span>💬 ${b.reviews.toLocaleString()} مراجعة</span>
+              ${b.phone ? `<span>📞 ${b.phone}</span>` : ''}
+            </div>
+            <div class="signals">
+              ${topReasons.map(r => `<span class="sig ${r.pos === true ? 'pos' : r.pos === false ? 'neg' : 'neu'}">${r.t}</span>`).join('')}
+              ${b.website ? `<a href="${b.website}" target="_blank" class="sig action">🔗 زيارة الرابط المسجل</a>` : ''}
+            </div>
+            <div class="why"><b>سبب التقييم:</b> ${whyText || "تحتاج لمراجعة إضافية"}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+</script>
+</body>
+</html>
