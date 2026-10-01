@@ -1,472 +1,4955 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>لقّاح — اكتشاف عملاء المواقع</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#1C2430;
-    --ink-soft:#4A5568;
-    --paper:#F5F4F0;
-    --panel:#FFFFFF;
-    --line:#E3E1DA;
-    --gold:#B8862E;
-    --gold-bg:#FBF3E3;
-    --teal:#2C6E63;
-    --teal-bg:#E6F2EF;
-    --rust:#A8461F;
-    --rust-bg:#FBEAE2;
-    --hot:#9C3A26;
-    --hot-bg:#F8E7DF;
-    --warm:#B8862E;
-    --warm-bg:#FBF3E3;
-    --cold:#5B6472;
-    --cold-bg:#EDECE8;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'IBM Plex Sans Arabic','Cairo',sans-serif;
-    line-height:1.6;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  .wrap{max-width:920px;margin:0 auto;padding:28px 20px 80px;}
+    <meta name="description"
+        content="آفاق للاستيراد والتصدير - شريكك الموثوق في التجارة الدولية والاستيراد والتصدير والخدمات التجارية.">
 
-  header.top{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    padding-bottom:22px;
-    margin-bottom:26px;
-    border-bottom:1px solid var(--line);
-  }
-  header.top .brand{
-    font-family:'Cairo',sans-serif;
-    font-weight:800;
-    font-size:22px;
-    letter-spacing:-0.3px;
-  }
-  header.top .brand span{color:var(--gold);}
-  header.top .tag{font-size:13px;color:var(--ink-soft);}
+    <meta name="keywords"
+        content="آفاق, استيراد, تصدير, تجارة دولية, السودان, Import Export, AFAQ">
 
-  .free-badge {
-    background: #E6F2EF;
-    border: 1px solid #B2DFDB;
-    color: #2C6E63;
-    padding: 10px 14px;
-    border-radius: 4px;
+    <title>آفاق | للاستيراد والتصدير</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        /* =========================================================
+   AFAQ IMPORT & EXPORT
+   Main Stylesheet
+========================================================= */
+
+:root {
+
+    --primary: #0c6b5b;
+    --primary-dark: #06483e;
+    --primary-light: #16a085;
+
+    --accent: #d7a84a;
+    --accent-light: #f0c86c;
+
+    --dark: #071b19;
+    --dark-2: #0c2824;
+
+    --white: #ffffff;
+
+    --bg: #f7f9f8;
+    --bg-soft: #eef4f1;
+
+    --text: #162522;
+    --text-light: #66736f;
+
+    --border: #dfe8e4;
+
+    --shadow: 0 20px 60px rgba(7, 27, 25, 0.10);
+
+    --radius: 18px;
+
+    --transition: 0.35s ease;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family: "Cairo", sans-serif;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+body.dark {
+
+    --bg: #071412;
+    --bg-soft: #0c211e;
+
+    --text: #f1f6f4;
+    --text-light: #a5b5b0;
+
+    --border: #1d3934;
+
+    --white: #ffffff;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+button {
+    border: 0;
+    cursor: pointer;
+}
+
+
+img {
+    width: 100%;
+    display: block;
+}
+
+
+.container {
+
+    width: min(1180px, 92%);
+
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+.preloader {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: var(--dark);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 9999;
+
+    transition: opacity 0.5s ease,
+                visibility 0.5s ease;
+}
+
+
+.preloader.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+}
+
+
+.loader {
+
+    text-align: center;
+}
+
+
+.loader-logo {
+
+    font-family: "Montserrat", sans-serif;
+
+    color: var(--white);
+
+    font-size: 40px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+}
+
+
+.loader-line {
+
+    width: 100px;
+
+    height: 3px;
+
+    background: var(--accent);
+
+    margin: 15px auto 0;
+
+    animation: loading 1.2s infinite;
+}
+
+
+@keyframes loading {
+
+    0% {
+        transform: scaleX(0);
+    }
+
+    50% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        backdrop-filter 0.3s ease;
+}
+
+
+.header.scrolled {
+
+    background: rgba(7, 27, 25, 0.96);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+}
+
+
+.navbar {
+
+    min-height: 82px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+.logo-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 13px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    color: white;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(12,107,91,0.25);
+}
+
+
+.logo-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1.1;
+}
+
+
+.logo-text strong {
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+
+.logo-text span {
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 10px;
+
+    margin-top: 4px;
+}
+
+
+.nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+
+.nav-link {
+
+    color: rgba(255,255,255,0.75);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    position: relative;
+
+    padding: 8px 0;
+
+    transition: var(--transition);
+}
+
+
+.nav-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+
+    right: 0;
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--accent);
+
+    transition: var(--transition);
+}
+
+
+.nav-link:hover,
+.nav-link.active {
+
+    color: white;
+}
+
+
+.nav-link:hover::after,
+.nav-link.active::after {
+
+    width: 100%;
+}
+
+
+.nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.language-btn,
+.theme-btn,
+.menu-btn {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    display: grid;
+
+    place-items: center;
+
+    transition: var(--transition);
+}
+
+
+.language-btn {
+
+    display: flex;
+
+    gap: 6px;
+
+    width: auto;
+
+    padding-inline: 12px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.language-btn:hover,
+.theme-btn:hover,
+.menu-btn:hover {
+
+    background: var(--primary);
+
+    transform: translateY(-2px);
+}
+
+
+.menu-btn {
+
+    display: none;
+}
+
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,20,18,0.97),
+            rgba(3,20,18,0.78),
+            rgba(3,20,18,0.55)
+        ),
+        url("https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+
+    overflow: hidden;
+}
+
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    border-radius: 50%;
+
+    background: rgba(12,107,91,0.18);
+
+    filter: blur(80px);
+
+    top: -250px;
+
+    right: -150px;
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns: 1.3fr 0.7fr;
+
+    align-items: center;
+
+    gap: 50px;
+
+    padding-top: 70px;
+}
+
+
+.hero-text {
+
+    max-width: 760px;
+}
+
+
+.hero-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 14px;
+
+    border: 1px solid rgba(255,255,255,0.16);
+
+    background: rgba(255,255,255,0.06);
+
+    border-radius: 50px;
+
+    color: rgba(255,255,255,0.8);
+
     font-size: 13px;
-    margin-bottom: 20px;
-  }
 
-  .search-panel{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:22px;
-    margin-bottom:34px;
-  }
-  .search-panel h1{
-    font-family:'Cairo',sans-serif;
-    font-size:19px;
-    font-weight:700;
-    margin:0 0 4px;
-  }
-  .search-panel p.sub{
-    margin:0 0 18px;
-    color:var(--ink-soft);
-    font-size:14px;
-  }
-  .fields{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-  }
-  @media (max-width:720px){ .fields{grid-template-columns:1fr 1fr;} }
-  .field label{
-    display:block;
-    font-size:12px;
-    color:var(--ink-soft);
-    margin-bottom:6px;
-  }
-  .field select, .field input{
-    width:100%;
-    padding:10px 12px;
-    border:1px solid var(--line);
-    border-radius:3px;
-    background:var(--paper);
-    font-family:inherit;
-    font-size:14px;
-    color:var(--ink);
-  }
-  .search-actions{
-    margin-top:18px;
-    display:flex;
-    align-items:center;
-    gap:14px;
-  }
-  button.run{
-    background:var(--ink);
-    color:#fff;
-    border:none;
-    padding:11px 22px;
-    border-radius:3px;
-    font-family:'Cairo',sans-serif;
-    font-weight:600;
-    font-size:14px;
-    cursor:pointer;
-  }
-  button.run:hover{background:#000;}
-  button.run:disabled{background:#A0AEC0; cursor:not-allowed;}
-  .search-actions .hint{font-size:12.5px;color:var(--ink-soft);}
+    margin-bottom: 25px;
 
-  .results-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    margin-bottom:16px;
-  }
-  .results-head h2{
-    font-family:'Cairo',sans-serif;
-    font-size:16px;
-    font-weight:700;
-    margin:0;
-  }
-  .results-head .count{font-size:13px;color:var(--ink-soft);}
-  .sort-row{font-size:13px;color:var(--ink-soft);margin-bottom:22px;}
-  .sort-row select{
-    border:none;
-    background:transparent;
-    font-family:inherit;
-    font-size:13px;
-    color:var(--ink);
-    font-weight:600;
-    border-bottom:1px dashed var(--ink-soft);
-    padding:0 2px 1px;
-    cursor:pointer;
-  }
+    backdrop-filter: blur(10px);
+}
 
-  .lead{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:18px 20px;
-    margin-bottom:12px;
-    display:grid;
-    grid-template-columns:76px 1fr;
-    gap:18px;
-  }
-  @media (max-width:600px){ .lead{grid-template-columns:1fr;} }
 
-  .score-col{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    gap:6px;
-    padding-top:2px;
-  }
-  .score-num{
-    font-family:'Cairo',sans-serif;
-    font-weight:800;
-    font-size:26px;
-    line-height:1;
-  }
-  .score-max{font-size:11px;color:var(--ink-soft);}
-  .tier-badge{
-    font-size:11px;
-    font-weight:700;
-    padding:3px 9px;
-    border-radius:20px;
-    white-space:nowrap;
-  }
-  .tier-hot .score-num{color:var(--hot);}
-  .tier-hot .tier-badge{background:var(--hot-bg);color:var(--hot);}
-  .tier-warm .score-num{color:var(--warm);}
-  .tier-warm .tier-badge{background:var(--warm-bg);color:var(--warm);}
-  .tier-cold .score-num{color:var(--cold);}
-  .tier-cold .tier-badge{background:var(--cold-bg);color:var(--cold);}
+.badge-dot {
 
-  .lead-body h3{
-    font-family:'Cairo',sans-serif;
-    font-size:16.5px;
-    font-weight:700;
-    margin:0 0 6px;
-  }
-  .meta-line{
-    font-size:13px;
-    color:var(--ink-soft);
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-    margin-bottom:12px;
-  }
+    width: 8px;
 
-  .signals{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-bottom:12px;
-  }
-  .sig{
-    font-size:12px;
-    padding:4px 10px;
-    border-radius:20px;
-    border:1px solid transparent;
-    text-decoration:none;
-  }
-  .sig.pos{background:var(--teal-bg);color:var(--teal);}
-  .sig.neg{background:var(--rust-bg);color:var(--rust);}
-  .sig.neu{background:var(--cold-bg);color:var(--cold);}
-  .sig.action{background:var(--gold-bg);color:var(--gold);font-weight:600;}
+    height: 8px;
 
-  .why{
-    font-size:13px;
-    color:var(--ink-soft);
-    border-right:2px solid var(--line);
-    padding-right:12px;
-  }
-  .why b{color:var(--ink);font-weight:600;}
+    background: var(--accent);
 
-  .status-message{
-    text-align:center;
-    padding:40px;
-    background:var(--panel);
-    border:1px dashed var(--line);
-    color:var(--ink-soft);
-  }
-</style>
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 5px rgba(215,168,74,0.12);
+}
+
+
+.hero h1 {
+
+    color: white;
+
+    font-size: clamp(42px, 6vw, 76px);
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 25px;
+}
+
+
+.gradient-text {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent-light)
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.hero p {
+
+    color: rgba(255,255,255,0.68);
+
+    font-size: 17px;
+
+    max-width: 650px;
+
+    margin-bottom: 35px;
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    min-height: 52px;
+
+    padding: 0 25px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+
+    border: 1px solid transparent;
+}
+
+
+.btn-primary {
+
+    background: var(--primary);
+
+    color: white;
+
+    box-shadow:
+        0 10px 30px rgba(12,107,91,0.25);
+}
+
+
+.btn-primary:hover {
+
+    background: var(--primary-light);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(12,107,91,0.35);
+}
+
+
+.btn-outline {
+
+    border-color: rgba(255,255,255,0.2);
+
+    color: white;
+
+    background: rgba(255,255,255,0.04);
+}
+
+
+.btn-outline:hover {
+
+    background: white;
+
+    color: var(--dark);
+
+    transform: translateY(-3px);
+}
+
+
+.hero-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 20px;
+}
+
+
+.floating-card {
+
+    width: 260px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px;
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 15px;
+
+    color: white;
+
+    animation: floating 4s ease-in-out infinite;
+}
+
+
+.floating-card.second {
+
+    margin-right: 70px;
+
+    animation-delay: -2s;
+}
+
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+.card-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 12px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: rgba(215,168,74,0.15);
+
+    color: var(--accent);
+
+    font-size: 20px;
+}
+
+
+.floating-card strong {
+
+    display: block;
+
+    font-size: 14px;
+}
+
+
+.floating-card span {
+
+    display: block;
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 11px;
+
+    margin-top: 4px;
+}
+
+
+.scroll-down {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: rgba(255,255,255,0.55);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 11px;
+
+    z-index: 2;
+}
+
+
+.scroll-down i {
+
+    animation: scrollArrow 1.5s infinite;
+}
+
+
+@keyframes scrollArrow {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+}
+
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats {
+
+    background: var(--dark);
+
+    color: white;
+
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+}
+
+
+.stat-item {
+
+    min-height: 125px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 25px;
+
+    border-left: 1px solid rgba(255,255,255,0.07);
+}
+
+
+.stat-item:last-child {
+
+    border-left: 0;
+}
+
+
+.stat-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 12px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: rgba(255,255,255,0.06);
+
+    color: var(--accent);
+
+    font-size: 19px;
+}
+
+
+.stat-item h3 {
+
+    font-size: 28px;
+
+    line-height: 1;
+
+    margin-bottom: 5px;
+}
+
+
+.stat-item p {
+
+    font-size: 11px;
+
+    color: rgba(255,255,255,0.5);
+}
+
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section {
+
+    padding: 110px 0;
+}
+
+
+.section-label {
+
+    display: inline-block;
+
+    color: var(--primary);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 12px;
+}
+
+
+.section-heading {
+
+    max-width: 720px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+
+.section-heading h2,
+.about-content h2,
+.why-content h2,
+.contact-info h2 {
+
+    font-size: clamp(30px, 4vw, 46px);
+
+    line-height: 1.25;
+
+    margin-bottom: 17px;
+
+    color: var(--text);
+
+    font-weight: 800;
+}
+
+
+.section-heading p,
+.about-content > p,
+.why-content > p,
+.contact-info > p {
+
+    color: var(--text-light);
+
+    font-size: 15px;
+}
+
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about {
+
+    background: var(--bg);
+}
+
+
+.about-grid {
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+
+.image-box {
+
+    position: relative;
+
+    border-radius: 25px;
+
+    overflow: visible;
+}
+
+
+.image-box img {
+
+    height: 540px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.experience-card {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    left: -35px;
+
+    padding: 20px 25px;
+
+    border-radius: 15px;
+
+    background: var(--primary);
+
+    color: white;
+
+    box-shadow: var(--shadow);
+}
+
+
+.experience-card strong {
+
+    display: block;
+
+    font-size: 35px;
+
+    line-height: 1;
+}
+
+
+.experience-card span {
+
+    font-size: 11px;
+
+    color: rgba(255,255,255,0.7);
+}
+
+
+.about-content h2 {
+
+    max-width: 550px;
+}
+
+
+.about-features {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin: 30px 0;
+}
+
+
+.about-features div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.about-features i {
+
+    color: var(--primary);
+
+    font-size: 17px;
+}
+
+
+.text-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--primary);
+
+    font-weight: 700;
+
+    font-size: 13px;
+
+    transition: var(--transition);
+}
+
+
+.text-link:hover {
+
+    gap: 15px;
+}
+
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services {
+
+    background: var(--bg-soft);
+}
+
+
+.services-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.service-card {
+
+    position: relative;
+
+    padding: 35px 27px;
+
+    background: var(--bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    transition: var(--transition);
+
+    overflow: hidden;
+}
+
+
+.service-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+
+    height: 130px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    opacity: 0.04;
+
+    top: -50px;
+
+    left: -50px;
+
+    transition: var(--transition);
+}
+
+
+.service-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: rgba(12,107,91,0.25);
+
+    box-shadow: var(--shadow);
+}
+
+
+.service-card:hover::before {
+
+    transform: scale(1.8);
+}
+
+
+.service-number {
+
+    position: absolute;
+
+    top: 22px;
+
+    left: 22px;
+
+    color: var(--border);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 800;
+}
+
+
+.service-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 14px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: rgba(12,107,91,0.09);
+
+    color: var(--primary);
+
+    font-size: 21px;
+
+    margin-bottom: 25px;
+}
+
+
+.service-card h3 {
+
+    font-size: 18px;
+
+    margin-bottom: 12px;
+}
+
+
+.service-card p {
+
+    color: var(--text-light);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+
+    margin-bottom: 25px;
+}
+
+
+.service-card > a {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 9px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: var(--dark);
+
+    color: white;
+
+    transition: var(--transition);
+}
+
+
+.service-card > a:hover {
+
+    background: var(--primary);
+
+    transform: translateX(-4px);
+}
+
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products {
+
+    background: var(--bg);
+}
+
+
+.heading-flex {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    text-align: right;
+
+    max-width: 100%;
+
+    gap: 40px;
+}
+
+
+.heading-flex > div {
+
+    flex: 1;
+}
+
+
+.heading-flex > p {
+
+    flex: 0.8;
+
+    max-width: 420px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+}
+
+
+.products-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+
+.product-card {
+
+    position: relative;
+
+    height: 430px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+
+.product-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+
+.product-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.85),
+            transparent 60%
+        );
+}
+
+
+.product-card:hover img {
+
+    transform: scale(1.08);
+}
+
+
+.product-overlay {
+
+    position: absolute;
+
+    bottom: 0;
+
+    right: 0;
+
+    left: 0;
+
+    z-index: 2;
+
+    padding: 25px;
+
+    color: white;
+}
+
+
+.product-overlay span {
+
+    color: var(--accent);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-weight: 700;
+
+    font-size: 12px;
+}
+
+
+.product-overlay h3 {
+
+    margin-top: 8px;
+
+    font-size: 20px;
+}
+
+
+.product-overlay p {
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+
+
+/* =========================================================
+   WHY US
+========================================================= */
+
+.why-us {
+
+    background: var(--bg-soft);
+
+    overflow: hidden;
+}
+
+
+.why-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 80px;
+}
+
+
+.why-list {
+
+    margin-top: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+
+.why-item {
+
+    display: flex;
+
+    gap: 15px;
+}
+
+
+.why-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: var(--bg);
+
+    color: var(--primary);
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+}
+
+
+.why-item h4 {
+
+    font-size: 15px;
+
+    margin-bottom: 2px;
+}
+
+
+.why-item p {
+
+    font-size: 12px;
+
+    color: var(--text-light);
+}
+
+
+.why-visual {
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+.world-card {
+
+    width: 470px;
+
+    height: 470px;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(12,107,91,0.17),
+            rgba(12,107,91,0.03) 55%,
+            transparent 56%
+        );
+
+    border: 1px solid rgba(12,107,91,0.1);
+}
+
+
+.world-circle {
+
+    position: absolute;
+
+    width: 250px;
+
+    height: 250px;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #168b76,
+            #06483e
+        );
+
+    display: grid;
+
+    place-items: center;
+
+    color: rgba(255,255,255,0.8);
+
+    font-size: 100px;
+
+    box-shadow:
+        0 0 0 30px rgba(12,107,91,0.04),
+        0 0 0 70px rgba(12,107,91,0.025);
+}
+
+
+.route {
+
+    position: absolute;
+
+    border: 1px dashed rgba(12,107,91,0.25);
+
+    border-radius: 50%;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+}
+
+
+.route-one {
+
+    width: 340px;
+
+    height: 190px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(25deg);
+}
+
+
+.route-two {
+
+    width: 400px;
+
+    height: 270px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-30deg);
+}
+
+
+.route-three {
+
+    width: 450px;
+
+    height: 350px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(60deg);
+}
+
+
+.location {
+
+    position: absolute;
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 0 7px rgba(215,168,74,0.12);
+}
+
+
+.location-one {
+
+    top: 18%;
+
+    right: 25%;
+}
+
+
+.location-two {
+
+    bottom: 22%;
+
+    left: 18%;
+}
+
+
+.location-three {
+
+    top: 35%;
+
+    left: 8%;
+}
+
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process {
+
+    background: var(--bg);
+}
+
+
+.process-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr auto 1fr auto 1fr;
+
+    align-items: start;
+
+    gap: 15px;
+}
+
+
+.process-item {
+
+    text-align: center;
+
+    position: relative;
+}
+
+
+.process-number {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.process-item > i {
+
+    font-size: 24px;
+
+    color: var(--accent);
+
+    margin-bottom: 13px;
+}
+
+
+.process-item h3 {
+
+    font-size: 16px;
+
+    margin-bottom: 7px;
+}
+
+
+.process-item p {
+
+    color: var(--text-light);
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+
+.process-line {
+
+    width: 55px;
+
+    height: 1px;
+
+    background: var(--border);
+
+    margin-top: 22px;
+}
+
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta {
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--primary-dark),
+            var(--primary)
+        );
+
+    color: white;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.cta::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+
+    height: 400px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.05);
+
+    top: -250px;
+
+    right: -100px;
+}
+
+
+.cta-content {
+
+    min-height: 260px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.cta .section-label {
+
+    color: var(--accent-light);
+}
+
+
+.cta h2 {
+
+    font-size: clamp(28px, 4vw, 42px);
+
+    line-height: 1.3;
+
+    margin-bottom: 10px;
+}
+
+
+.cta p {
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 13px;
+}
+
+
+.btn-light {
+
+    background: white;
+
+    color: var(--primary);
+
+    white-space: nowrap;
+}
+
+
+.btn-light:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+}
+
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact {
+
+    background: var(--bg-soft);
+}
+
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-columns: 0.8fr 1.2fr;
+
+    gap: 80px;
+
+    align-items: start;
+}
+
+
+.contact-info h2 {
+
+    margin-bottom: 15px;
+}
+
+
+.contact-details {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+.contact-detail {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.contact-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 11px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: var(--bg);
+
+    color: var(--primary);
+}
+
+
+.contact-detail span {
+
+    display: block;
+
+    color: var(--text-light);
+
+    font-size: 10px;
+}
+
+
+.contact-detail strong {
+
+    display: block;
+
+    font-size: 13px;
+
+    margin-top: 2px;
+}
+
+
+.social-links {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 30px;
+}
+
+
+.social-links a {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: var(--bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    color: var(--text-light);
+
+    transition: var(--transition);
+}
+
+
+.social-links a:hover {
+
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: white;
+
+    transform: translateY(-3px);
+}
+
+
+.contact-form {
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    background: var(--bg);
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+}
+
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+
+.form-group {
+
+    margin-bottom: 17px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    background: var(--bg-soft);
+
+    color: var(--text);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    padding: 13px 14px;
+
+    font-size: 12px;
+
+    transition: var(--transition);
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(12,107,91,0.08);
+}
+
+
+.form-group textarea {
+
+    resize: vertical;
+
+    min-height: 130px;
+}
+
+
+.submit-btn {
+
+    width: 100%;
+
+    border: 0;
+
+    margin-top: 5px;
+}
+
+
+.form-message {
+
+    text-align: center;
+
+    font-size: 12px;
+
+    margin-top: 12px;
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    background: var(--dark);
+
+    color: white;
+}
+
+
+.footer-grid {
+
+    padding: 70px 0;
+
+    display: grid;
+
+    grid-template-columns: 1.3fr 0.8fr 0.8fr 1.2fr;
+
+    gap: 50px;
+}
+
+
+.footer-brand > p {
+
+    color: rgba(255,255,255,0.45);
+
+    font-size: 12px;
+
+    max-width: 260px;
+
+    margin-top: 18px;
+}
+
+
+.footer-links {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.footer h4 {
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+
+.footer-links a {
+
+    color: rgba(255,255,255,0.5);
+
+    font-size: 11px;
+
+    transition: var(--transition);
+}
+
+
+.footer-links a:hover {
+
+    color: var(--accent);
+
+    transform: translateX(-4px);
+}
+
+
+.footer-newsletter p {
+
+    color: rgba(255,255,255,0.45);
+
+    font-size: 11px;
+
+    margin-bottom: 15px;
+}
+
+
+.newsletter {
+
+    display: flex;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 9px;
+
+    overflow: hidden;
+}
+
+
+.newsletter input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    background: transparent;
+
+    border: 0;
+
+    outline: none;
+
+    color: white;
+
+    padding: 12px;
+
+    font-size: 11px;
+}
+
+
+.newsletter button {
+
+    width: 45px;
+
+    background: var(--primary);
+
+    color: white;
+}
+
+
+.footer-bottom {
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+
+.footer-bottom .container {
+
+    min-height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: rgba(255,255,255,0.35);
+
+    font-size: 10px;
+}
+
+
+
+/* =========================================================
+   BACK TOP
+========================================================= */
+
+.back-top {
+
+    position: fixed;
+
+    bottom: 25px;
+
+    left: 25px;
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 12px;
+
+    background: var(--primary);
+
+    color: white;
+
+    display: grid;
+
+    place-items: center;
+
+    z-index: 500;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    transition: var(--transition);
+
+    box-shadow: 0 10px 25px rgba(12,107,91,0.3);
+}
+
+
+.back-top.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+
+.reveal.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+
+/* =========================================================
+   ENGLISH
+========================================================= */
+
+body.english {
+
+    font-family: "Montserrat", sans-serif;
+
+    direction: ltr;
+}
+
+
+body.english .nav-link::after {
+
+    left: 0;
+
+    right: auto;
+}
+
+
+body.english .hero {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,20,18,0.97),
+            rgba(3,20,18,0.78),
+            rgba(3,20,18,0.55)
+        ),
+        url("https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+}
+
+
+body.english .service-number {
+
+    right: 22px;
+
+    left: auto;
+}
+
+
+body.english .experience-card {
+
+    right: -35px;
+
+    left: auto;
+}
+
+
+body.english .text-link:hover {
+
+    gap: 15px;
+}
+
+
+body.english .footer-links a:hover {
+
+    transform: translateX(4px);
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .nav {
+
+        gap: 17px;
+    }
+
+    .services-grid,
+    .products-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content {
+
+        grid-template-columns: 1fr;
+    }
+
+    .hero-card {
+
+        display: none;
+    }
+
+    .about-grid,
+    .why-grid {
+
+        gap: 50px;
+    }
+
+    .footer-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+@media (max-width: 800px) {
+
+    .navbar {
+
+        min-height: 72px;
+    }
+
+    .menu-btn {
+
+        display: grid;
+    }
+
+    .nav {
+
+        position: absolute;
+
+        top: 72px;
+
+        right: 4%;
+
+        left: 4%;
+
+        padding: 15px;
+
+        background: rgba(7,27,25,0.98);
+
+        border: 1px solid rgba(255,255,255,0.08);
+
+        border-radius: 15px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 3px;
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transform: translateY(-10px);
+
+        transition: var(--transition);
+    }
+
+    .nav.open {
+
+        opacity: 1;
+
+        visibility: visible;
+
+        transform: translateY(0);
+    }
+
+    .nav-link {
+
+        padding: 12px;
+
+        border-radius: 8px;
+    }
+
+    .nav-link:hover {
+
+        background: rgba(255,255,255,0.05);
+    }
+
+    .nav-link::after {
+
+        display: none;
+    }
+
+    .stats-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-item {
+
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .about-grid,
+    .why-grid,
+    .contact-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .about-grid {
+
+        gap: 55px;
+    }
+
+    .why-visual {
+
+        order: -1;
+    }
+
+    .world-card {
+
+        width: 360px;
+
+        height: 360px;
+    }
+
+    .world-circle {
+
+        width: 200px;
+
+        height: 200px;
+
+        font-size: 75px;
+    }
+
+    .process-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .process-line {
+
+        width: 1px;
+
+        height: 35px;
+
+        margin: 0 auto;
+    }
+
+    .cta-content {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        justify-content: center;
+
+        padding: 60px 0;
+    }
+
+    .contact-grid {
+
+        gap: 45px;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+
+    .section {
+
+        padding: 75px 0;
+    }
+
+    .logo-text span {
+
+        display: none;
+    }
+
+    .hero {
+
+        min-height: 760px;
+    }
+
+    .hero h1 {
+
+        font-size: 40px;
+
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .btn {
+
+        width: 100%;
+    }
+
+    .stats-grid {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-item {
+
+        padding: 20px 12px;
+
+        gap: 9px;
+    }
+
+    .stat-icon {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 15px;
+    }
+
+    .stat-item h3 {
+
+        font-size: 22px;
+    }
+
+    .stat-item p {
+
+        font-size: 9px;
+    }
+
+    .about-features {
+
+        grid-template-columns: 1fr;
+    }
+
+    .experience-card {
+
+        left: 15px;
+
+        bottom: 15px;
+    }
+
+    body.english .experience-card {
+
+        right: 15px;
+    }
+
+    .services-grid,
+    .products-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .heading-flex {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .heading-flex > p {
+
+        max-width: 100%;
+    }
+
+    .product-card {
+
+        height: 380px;
+    }
+
+    .world-card {
+
+        width: 290px;
+
+        height: 290px;
+    }
+
+    .world-circle {
+
+        width: 160px;
+
+        height: 160px;
+
+        font-size: 60px;
+    }
+
+    .route-one {
+
+        width: 230px;
+
+        height: 130px;
+    }
+
+    .route-two {
+
+        width: 270px;
+
+        height: 190px;
+    }
+
+    .route-three {
+
+        width: 300px;
+
+        height: 230px;
+    }
+
+    .contact-form {
+
+        padding: 22px;
+    }
+
+    .form-row {
+
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        padding: 55px 0;
+    }
+
+    .footer-bottom .container {
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        padding: 20px 0;
+
+        text-align: center;
+    }
+
+    .language-btn {
+
+        padding-inline: 9px;
+    }
+}
+    </style>
 </head>
+
 <body>
-<div class="wrap">
 
-  <header class="top">
-    <div class="brand">لقّاح<span>.</span></div>
-    <div class="tag">النسخة المجانية — GitHub Pages</div>
-  </header>
-
-  <div class="free-badge">
-    🎉 <b>وضع التشغيل المباشر:</b> الربط جاري عبر بروكسي مرن لتفادي مشاكل الأمان المتصفحية.
-  </div>
-
-  <div class="search-panel">
-    <h1>ابحث عن عملاء حقيقيين الآن</h1>
-    <p class="sub">حدد النشاط والمدينة لجلب البيانات وتحليل قدرة الفرصة بذكاء.</p>
-    <div class="fields">
-      <div class="field" style="grid-column: span 2;">
-        <label>SerpAPI Key (مُفعل تلقائياً)</label>
-        <input type="text" id="f-apikey" value="8b9ccfb9e8797679118b08b583bd467a75ca7eefb4d47848b15e04e821c8083c">
-      </div>
-      <div class="field">
-        <label>المدينة</label>
-        <select id="f-city">
-          <option value="جدة">جدة</option>
-          <option value="الرياض">الرياض</option>
-          <option value="الدمام">الدمام</option>
-          <option value="مكة">مكة</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>النشاط التجاري</label>
-        <input type="text" id="f-business" value="حلويات">
-      </div>
-    </div>
-    <div class="search-actions">
-      <button class="run" id="search-btn" onclick="runSearch()">بحث واستخراج الأنشطة</button>
-      <span class="hint" id="search-status">جاهز للبدء</span>
-    </div>
-  </div>
-
-  <div class="results-head">
-    <h2>النتائج المباشرة</h2>
-    <span class="count" id="result-count">0 نشاط تم تحليله</span>
-  </div>
-  <div class="sort-row">
-    الترتيب:
-    <select id="sort-select" onchange="render()">
-      <option value="score-desc">الأعلى فرصة أولاً</option>
-      <option value="score-asc">الأقل فرصة أولاً</option>
-      <option value="reviews-desc">الأكثر مراجعات</option>
-    </select>
-  </div>
-
-  <div id="results">
-    <div class="status-message">اضغط على زر "بحث واستخراج الأنشطة" للبدء مباشرة.</div>
-  </div>
-
-</div>
-
-<script>
-  let fetchedBusinesses = [];
-
-  async function fetchFromSerpApi(apiKey, query) {
-    const targetUrl = `https://serpapi.com/search.json?engine=google_maps&q=${encodeURIComponent(query)}&hl=ar&api_key=${apiKey}`;
-    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
-    
-    const response = await fetch(proxyUrl);
-
-    if (!response.ok) {
-      throw new Error('فشل جلب البيانات. تأكد من صحة الـ API Key الخاص بك.');
-    }
-
-    const data = await response.json();
-    if (data.error) {
-      throw new Error(data.error);
-    }
-    return data.local_results || [];
-  }
-
-  function calculateScore(place) {
-    let score = 0;
-    const reasons = [];
-
-    const hasWeb = Boolean(place.website);
-    const reviews = place.reviews || 0;
-    const rating = place.rating || 0;
-
-    // 1. التقييم بناءً على الموقع
-    if (!hasWeb) {
-      score += 45;
-      reasons.push({ t: "لا يوجد موقع إلكتروني مسجل", pos: true });
-    } else {
-      const isSocial = /instagram|facebook|twitter|tiktok|wa\.me/i.test(place.website);
-      if (isSocial) {
-        score += 35;
-        reasons.push({ t: "الموقع المسجل هو صفحة سوشيال ميديا", pos: true });
-      } else {
-        reasons.push({ t: "لديه موقع إلكتروني بالفعل", pos: false });
-      }
-    }
-
-    // 2. التقييم بناءً على حركة العملاء والمراجعات
-    if (reviews > 1000) {
-      score += 30;
-      reasons.push({ t: reviews.toLocaleString() + " مراجعة (إقبال ضخم)", pos: true });
-    } else if (reviews > 250) {
-      score += 20;
-      reasons.push({ t: reviews.toLocaleString() + " مراجعة (نشاط نشط)", pos: true });
-    } else if (reviews > 30) {
-      score += 10;
-      reasons.push({ t: reviews.toLocaleString() + " مراجعة", pos: null });
-    } else {
-      reasons.push({ t: reviews + " مراجعة فقط", pos: false });
-    }
-
-    // 3. تقييم جودة الخدمات
-    if (rating >= 4.0) {
-      score += 15;
-      reasons.push({ t: "تقييم عالي " + rating + "⭐", pos: true });
-    }
-
-    // 4. توفر الهاتف
-    if (place.phone) {
-      score += 10;
-      reasons.push({ t: "رقم الهاتف متوفر", pos: true });
-    }
-
-    return { score: Math.min(score, 100), reasons };
-  }
-
-  function tierOf(score) {
-    if (score >= 65) return { cls: "tier-hot", label: "فرصة قوية جداً" };
-    if (score >= 40) return { cls: "tier-warm", label: "فرصة متوسطة" };
-    return { cls: "tier-cold", label: "فرصة ضعيفة" };
-  }
-
-  async function runSearch() {
-    const apiKey = document.getElementById('f-apikey').value.trim();
-    const city = document.getElementById('f-city').value;
-    const biz = document.getElementById('f-business').value.trim();
-    const statusText = document.getElementById('search-status');
-    const searchBtn = document.getElementById('search-btn');
-
-    if (!apiKey) {
-      alert('يرجى وضع المفتاح المجاني من SerpAPI أولاً');
-      return;
-    }
-
-    searchBtn.disabled = true;
-    statusText.textContent = 'جاري البحث في خرائط Google...';
-    document.getElementById('results').innerHTML = `<div class="status-message">جاري استخراج وتحليل الأنشطة...</div>`;
-
-    try {
-      const searchQuery = `${biz} في ${city}`;
-      const places = await fetchFromSerpApi(apiKey, searchQuery);
-
-      fetchedBusinesses = places.map(p => ({
-        name: p.title || 'بدون اسم',
-        city: p.address || city,
-        rating: p.rating || 0,
-        reviews: p.reviews || 0,
-        website: p.website,
-        phone: p.phone,
-        type: p.type,
-        ...calculateScore(p)
-      }));
-
-      statusText.textContent = 'تم استخراج البيانات بنجاح!';
-      render();
-    } catch (err) {
-      alert('خطأ: ' + err.message);
-      statusText.textContent = 'فشل البحث';
-      document.getElementById('results').innerHTML = `<div class="status-message" style="color:var(--rust);">خطأ: ${err.message}</div>`;
-    } finally {
-      searchBtn.disabled = false;
-    }
-  }
-
-  function render() {
-    const sort = document.getElementById('sort-select').value;
-    let scored = [...fetchedBusinesses];
-
-    if (sort === "score-desc") scored.sort((a, b) => b.score - a.score);
-    if (sort === "score-asc") scored.sort((a, b) => a.score - b.score);
-    if (sort === "reviews-desc") scored.sort((a, b) => b.reviews - a.reviews);
-
-    document.getElementById('result-count').textContent = scored.length + " نشاط تم تحليله";
-
-    const container = document.getElementById('results');
-
-    if (scored.length === 0) {
-      container.innerHTML = `<div class="status-message">لم نجد نتائج مطابقة لمُدخلاتك.</div>`;
-      return;
-    }
-
-    container.innerHTML = scored.map(b => {
-      const tier = tierOf(b.score);
-      const topReasons = b.reasons.slice(0, 5);
-      const whyText = b.reasons.filter(r => r.pos === true).map(r => r.t).join("، ");
-
-      return `
-        <div class="lead ${tier.cls}">
-          <div class="score-col">
-            <div class="score-num">${b.score}</div>
-            <div class="score-max">من 100</div>
-            <div class="tier-badge">${tier.label}</div>
-          </div>
-          <div class="lead-body">
-            <h3>${b.name}</h3>
-            <div class="meta-line">
-              <span>📍 ${b.city}</span>
-              <span>⭐ ${b.rating}</span>
-              <span>💬 ${b.reviews.toLocaleString()} مراجعة</span>
-              ${b.phone ? `<span>📞 ${b.phone}</span>` : ''}
-            </div>
-            <div class="signals">
-              ${topReasons.map(r => `<span class="sig ${r.pos === true ? 'pos' : r.pos === false ? 'neg' : 'neu'}">${r.t}</span>`).join('')}
-              ${b.website ? `<a href="${b.website}" target="_blank" class="sig action">🔗 زيارة الرابط المسجل</a>` : ''}
-            </div>
-            <div class="why"><b>سبب التقييم:</b> ${whyText || "تحتاج لمراجعة إضافية"}</div>
-          </div>
+    <!-- =========================
+         PRELOADER
+    ========================== -->
+    <div class="preloader" id="preloader">
+        <div class="loader">
+            <div class="loader-logo">AFAQ</div>
+            <div class="loader-line"></div>
         </div>
-      `;
-    }).join('');
-  }
-</script>
+    </div>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="header" id="header">
+
+        <div class="container navbar">
+
+            <a href="#home" class="logo">
+
+                <div class="logo-icon">
+                    <i class="fa-solid fa-earth-americas"></i>
+                </div>
+
+                <div class="logo-text">
+                    <strong>آفاق</strong>
+                    <span data-ar="للاستيراد والتصدير"
+                          data-en="Import & Export">
+                        للاستيراد والتصدير
+                    </span>
+                </div>
+
+            </a>
+
+
+            <nav class="nav" id="nav">
+
+                <a href="#home" class="nav-link active"
+                   data-ar="الرئيسية"
+                   data-en="Home">
+                    الرئيسية
+                </a>
+
+                <a href="#about" class="nav-link"
+                   data-ar="من نحن"
+                   data-en="About Us">
+                    من نحن
+                </a>
+
+                <a href="#services" class="nav-link"
+                   data-ar="خدماتنا"
+                   data-en="Services">
+                    خدماتنا
+                </a>
+
+                <a href="#products" class="nav-link"
+                   data-ar="منتجاتنا"
+                   data-en="Products">
+                    منتجاتنا
+                </a>
+
+                <a href="#process" class="nav-link"
+                   data-ar="آلية العمل"
+                   data-en="How We Work">
+                    آلية العمل
+                </a>
+
+                <a href="#contact" class="nav-link"
+                   data-ar="تواصل معنا"
+                   data-en="Contact">
+                    تواصل معنا
+                </a>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+                <button class="language-btn" id="languageBtn">
+                    <i class="fa-solid fa-language"></i>
+                    <span id="languageText">EN</span>
+                </button>
+
+                <button class="theme-btn" id="themeBtn">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content">
+
+                <div class="hero-text reveal">
+
+                    <div class="hero-badge">
+
+                        <span class="badge-dot"></span>
+
+                        <span
+                            data-ar="شريكك في التجارة العالمية"
+                            data-en="Your Partner in Global Trade">
+                            شريكك في التجارة العالمية
+                        </span>
+
+                    </div>
+
+
+                    <h1>
+
+                        <span
+                            data-ar="نفتح لك"
+                            data-en="Opening">
+                            نفتح لك
+                        </span>
+
+                        <span class="gradient-text"
+                              data-ar="آفاقاً جديدة"
+                              data-en="New Horizons">
+                            آفاقاً جديدة
+                        </span>
+
+                        <br>
+
+                        <span
+                            data-ar="في عالم التجارة"
+                            data-en="in Global Trade">
+                            في عالم التجارة
+                        </span>
+
+                    </h1>
+
+
+                    <p
+                        data-ar="نربط الأسواق ونسهّل عمليات الاستيراد والتصدير من خلال حلول تجارية موثوقة واحترافية."
+                        data-en="We connect markets and simplify import and export operations through reliable and professional trading solutions.">
+                        نربط الأسواق ونسهّل عمليات الاستيراد والتصدير من خلال حلول تجارية موثوقة واحترافية.
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a href="#contact" class="btn btn-primary">
+
+                            <span
+                                data-ar="ابدأ شراكتك معنا"
+                                data-en="Start Your Partnership">
+                                ابدأ شراكتك معنا
+                            </span>
+
+                            <i class="fa-solid fa-arrow-left"></i>
+
+                        </a>
+
+
+                        <a href="#services" class="btn btn-outline">
+
+                            <span
+                                data-ar="اكتشف خدماتنا"
+                                data-en="Explore Our Services">
+                                اكتشف خدماتنا
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-card reveal">
+
+                    <div class="floating-card">
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+
+                        <div>
+                            <strong
+                                data-ar="تجارة بلا حدود"
+                                data-en="Trade Without Borders">
+                                تجارة بلا حدود
+                            </strong>
+
+                            <span
+                                data-ar="نصل الأسواق ببعضها"
+                                data-en="Connecting markets together">
+                                نصل الأسواق ببعضها
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="floating-card second">
+
+                        <div class="card-icon">
+                            <i class="fa-solid fa-ship"></i>
+                        </div>
+
+                        <div>
+                            <strong
+                                data-ar="حلول لوجستية"
+                                data-en="Logistics Solutions">
+                                حلول لوجستية
+                            </strong>
+
+                            <span
+                                data-ar="من المصدر إلى وجهتك"
+                                data-en="From source to destination">
+                                من المصدر إلى وجهتك
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="scroll-down">
+
+                <span
+                    data-ar="اكتشف المزيد"
+                    data-en="Discover More">
+                    اكتشف المزيد
+                </span>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             STATS
+        ========================== -->
+
+        <section class="stats">
+
+            <div class="container stats-grid">
+
+                <div class="stat-item reveal">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-earth-africa"></i>
+                    </div>
+
+                    <div>
+                        <h3>
+                            <span class="counter" data-target="12">0</span>+
+                        </h3>
+
+                        <p
+                            data-ar="سوقاً حول العالم"
+                            data-en="Markets Worldwide">
+                            سوقاً حول العالم
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-item reveal">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+
+                    <div>
+                        <h3>
+                            <span class="counter" data-target="150">0</span>+
+                        </h3>
+
+                        <p
+                            data-ar="شريكاً تجارياً"
+                            data-en="Business Partners">
+                            شريكاً تجارياً
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-item reveal">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+
+                    <div>
+                        <h3>
+                            <span class="counter" data-target="500">0</span>+
+                        </h3>
+
+                        <p
+                            data-ar="عملية تجارية"
+                            data-en="Trade Operations">
+                            عملية تجارية
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-item reveal">
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+
+                    <div>
+                        <h3>
+                            <span class="counter" data-target="10">0</span>+
+                        </h3>
+
+                        <p
+                            data-ar="سنوات من الخبرة"
+                            data-en="Years of Experience">
+                            سنوات من الخبرة
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section class="section about" id="about">
+
+            <div class="container about-grid">
+
+                <div class="about-image reveal">
+
+                    <div class="image-box">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=80"
+                            alt="International Trade">
+
+                        <div class="experience-card">
+
+                            <strong>10+</strong>
+
+                            <span
+                                data-ar="سنوات من الخبرة"
+                                data-en="Years Experience">
+                                سنوات من الخبرة
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-content reveal">
+
+                    <span class="section-label"
+                          data-ar="من نحن"
+                          data-en="ABOUT US">
+                        من نحن
+                    </span>
+
+                    <h2
+                        data-ar="نبني جسوراً تجارية بين الأسواق"
+                        data-en="Building Trade Bridges Between Markets">
+                        نبني جسوراً تجارية بين الأسواق
+                    </h2>
+
+                    <p
+                        data-ar="آفاق شركة متخصصة في مجال الاستيراد والتصدير، نسعى إلى بناء علاقات تجارية طويلة الأمد وتقديم حلول متكاملة تساعد عملاءنا على الوصول إلى المنتجات والأسواق التي يحتاجونها."
+                        data-en="AFAQ is a company specialized in import and export. We build long-term business relationships and provide integrated solutions that help our clients access the products and markets they need.">
+                        آفاق شركة متخصصة في مجال الاستيراد والتصدير، نسعى إلى بناء علاقات تجارية طويلة الأمد وتقديم حلول متكاملة تساعد عملاءنا على الوصول إلى المنتجات والأسواق التي يحتاجونها.
+                    </p>
+
+
+                    <div class="about-features">
+
+                        <div>
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <span
+                                data-ar="موثوقية وشفافية"
+                                data-en="Reliability & Transparency">
+                                موثوقية وشفافية
+                            </span>
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <span
+                                data-ar="شبكة موردين واسعة"
+                                data-en="Wide Supplier Network">
+                                شبكة موردين واسعة
+                            </span>
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <span
+                                data-ar="حلول تجارية متكاملة"
+                                data-en="Integrated Trade Solutions">
+                                حلول تجارية متكاملة
+                            </span>
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <span
+                                data-ar="دعم مستمر للعملاء"
+                                data-en="Continuous Client Support">
+                                دعم مستمر للعملاء
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <a href="#contact" class="text-link">
+
+                        <span
+                            data-ar="تحدث مع فريقنا"
+                            data-en="Talk to Our Team">
+                            تحدث مع فريقنا
+                        </span>
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             SERVICES
+        ========================== -->
+
+        <section class="section services" id="services">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <span class="section-label"
+                          data-ar="خدماتنا"
+                          data-en="OUR SERVICES">
+                        خدماتنا
+                    </span>
+
+                    <h2
+                        data-ar="حلول تجارية مصممة لنجاحك"
+                        data-en="Trade Solutions Designed for Your Success">
+                        حلول تجارية مصممة لنجاحك
+                    </h2>
+
+                    <p
+                        data-ar="نوفر مجموعة متكاملة من الخدمات التي تجعل عمليات التجارة الدولية أكثر سهولة ووضوحاً."
+                        data-en="We provide integrated services that make international trade easier, clearer and more efficient.">
+                        نوفر مجموعة متكاملة من الخدمات التي تجعل عمليات التجارة الدولية أكثر سهولة ووضوحاً.
+                    </p>
+
+                </div>
+
+
+                <div class="services-grid">
+
+                    <article class="service-card reveal">
+
+                        <div class="service-number">01</div>
+
+                        <div class="service-icon">
+                            <i class="fa-solid fa-cart-flatbed"></i>
+                        </div>
+
+                        <h3
+                            data-ar="الاستيراد"
+                            data-en="Import">
+                            الاستيراد
+                        </h3>
+
+                        <p
+                            data-ar="توفير المنتجات والسلع من مصادر موثوقة وبجودة عالية وفق احتياجات السوق."
+                            data-en="Sourcing products and goods from trusted suppliers according to market needs.">
+                            توفير المنتجات والسلع من مصادر موثوقة وبجودة عالية وفق احتياجات السوق.
+                        </p>
+
+                        <a href="#contact">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+
+                    </article>
+
+
+                    <article class="service-card reveal">
+
+                        <div class="service-number">02</div>
+
+                        <div class="service-icon">
+                            <i class="fa-solid fa-ship"></i>
+                        </div>
+
+                        <h3
+                            data-ar="التصدير"
+                            data-en="Export">
+                            التصدير
+                        </h3>
+
+                        <p
+                            data-ar="ربط المنتجات المحلية بالأسواق الخارجية وفتح فرص جديدة للتوسع التجاري."
+                            data-en="Connecting local products with international markets and creating new growth opportunities.">
+                            ربط المنتجات المحلية بالأسواق الخارجية وفتح فرص جديدة للتوسع التجاري.
+                        </p>
+
+                        <a href="#contact">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+
+                    </article>
+
+
+                    <article class="service-card reveal">
+
+                        <div class="service-number">03</div>
+
+                        <div class="service-icon">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+
+                        <h3
+                            data-ar="الخدمات اللوجستية"
+                            data-en="Logistics">
+                            الخدمات اللوجستية
+                        </h3>
+
+                        <p
+                            data-ar="تنسيق عمليات الشحن والنقل ومتابعة حركة البضائع حتى وصولها إلى وجهتها."
+                            data-en="Coordinating shipping and transportation while tracking goods until they reach their destination.">
+                            تنسيق عمليات الشحن والنقل ومتابعة حركة البضائع حتى وصولها إلى وجهتها.
+                        </p>
+
+                        <a href="#contact">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+
+                    </article>
+
+
+                    <article class="service-card reveal">
+
+                        <div class="service-number">04</div>
+
+                        <div class="service-icon">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+
+                        <h3
+                            data-ar="الوساطة التجارية"
+                            data-en="Trade Brokerage">
+                            الوساطة التجارية
+                        </h3>
+
+                        <p
+                            data-ar="المساعدة في بناء الشراكات التجارية وربط المشترين بالموردين المناسبين."
+                            data-en="Helping businesses build partnerships and connect buyers with suitable suppliers.">
+                            المساعدة في بناء الشراكات التجارية وربط المشترين بالموردين المناسبين.
+                        </p>
+
+                        <a href="#contact">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PRODUCTS
+        ========================== -->
+
+        <section class="section products" id="products">
+
+            <div class="container">
+
+                <div class="section-heading heading-flex reveal">
+
+                    <div>
+
+                        <span class="section-label"
+                              data-ar="منتجاتنا"
+                              data-en="OUR PRODUCTS">
+                            منتجاتنا
+                        </span>
+
+                        <h2
+                            data-ar="مجالات تجارية متنوعة"
+                            data-en="Diverse Trading Categories">
+                            مجالات تجارية متنوعة
+                        </h2>
+
+                    </div>
+
+                    <p
+                        data-ar="نعمل على توفير مجموعة متنوعة من المنتجات وفق متطلبات الأسواق والعملاء."
+                        data-en="We source a wide range of products based on market and client requirements.">
+                        نعمل على توفير مجموعة متنوعة من المنتجات وفق متطلبات الأسواق والعملاء.
+                    </p>
+
+                </div>
+
+
+                <div class="products-grid">
+
+                    <div class="product-card reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80"
+                            alt="Agricultural Products">
+
+                        <div class="product-overlay">
+
+                            <span>01</span>
+
+                            <h3
+                                data-ar="المنتجات الزراعية"
+                                data-en="Agricultural Products">
+                                المنتجات الزراعية
+                            </h3>
+
+                            <p
+                                data-ar="منتجات زراعية وسلع غذائية"
+                                data-en="Agricultural and food commodities">
+                                منتجات زراعية وسلع غذائية
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-card reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=900&q=80"
+                            alt="Industrial Products">
+
+                        <div class="product-overlay">
+
+                            <span>02</span>
+
+                            <h3
+                                data-ar="المنتجات الصناعية"
+                                data-en="Industrial Products">
+                                المنتجات الصناعية
+                            </h3>
+
+                            <p
+                                data-ar="معدات ومواد صناعية"
+                                data-en="Industrial equipment and materials">
+                                معدات ومواد صناعية
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-card reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1586528116493-da8b1c0f8c0d?auto=format&fit=crop&w=900&q=80"
+                            alt="Consumer Goods">
+
+                        <div class="product-overlay">
+
+                            <span>03</span>
+
+                            <h3
+                                data-ar="السلع الاستهلاكية"
+                                data-en="Consumer Goods">
+                                السلع الاستهلاكية
+                            </h3>
+
+                            <p
+                                data-ar="منتجات للاستخدام اليومي"
+                                data-en="Everyday consumer products">
+                                منتجات للاستخدام اليومي
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-card reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d6?auto=format&fit=crop&w=900&q=80"
+                            alt="Logistics">
+
+                        <div class="product-overlay">
+
+                            <span>04</span>
+
+                            <h3
+                                data-ar="الشحن والخدمات"
+                                data-en="Shipping & Services">
+                                الشحن والخدمات
+                            </h3>
+
+                            <p
+                                data-ar="حلول نقل وشحن دولية"
+                                data-en="International shipping solutions">
+                                حلول نقل وشحن دولية
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             WHY AFAQ
+        ========================== -->
+
+        <section class="section why-us">
+
+            <div class="container why-grid">
+
+                <div class="why-content reveal">
+
+                    <span class="section-label"
+                          data-ar="لماذا آفاق؟"
+                          data-en="WHY AFAQ">
+                        لماذا آفاق؟
+                    </span>
+
+                    <h2
+                        data-ar="شريك تجاري يفهم احتياجاتك"
+                        data-en="A Business Partner That Understands Your Needs">
+                        شريك تجاري يفهم احتياجاتك
+                    </h2>
+
+                    <p
+                        data-ar="نؤمن أن نجاح التجارة يبدأ من الثقة، لذلك نركز على بناء علاقات طويلة الأمد وتقديم حلول واضحة ومرنة."
+                        data-en="We believe successful trade starts with trust. That's why we focus on long-term relationships and clear, flexible solutions.">
+                        نؤمن أن نجاح التجارة يبدأ من الثقة، لذلك نركز على بناء علاقات طويلة الأمد وتقديم حلول واضحة ومرنة.
+                    </p>
+
+
+                    <div class="why-list">
+
+                        <div class="why-item">
+
+                            <div class="why-icon">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+
+                            <div>
+                                <h4
+                                    data-ar="الثقة والشفافية"
+                                    data-en="Trust & Transparency">
+                                    الثقة والشفافية
+                                </h4>
+
+                                <p
+                                    data-ar="وضوح في التعامل ومتابعة مستمرة."
+                                    data-en="Clear communication and continuous follow-up.">
+                                    وضوح في التعامل ومتابعة مستمرة.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="why-item">
+
+                            <div class="why-icon">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+
+                            <div>
+                                <h4
+                                    data-ar="شبكة عالمية"
+                                    data-en="Global Network">
+                                    شبكة عالمية
+                                </h4>
+
+                                <p
+                                    data-ar="الوصول إلى موردين وأسواق متعددة."
+                                    data-en="Access to multiple suppliers and markets.">
+                                    الوصول إلى موردين وأسواق متعددة.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="why-item">
+
+                            <div class="why-icon">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+
+                            <div>
+                                <h4
+                                    data-ar="دعم متخصص"
+                                    data-en="Expert Support">
+                                    دعم متخصص
+                                </h4>
+
+                                <p
+                                    data-ar="فريق جاهز لمساعدتك في كل خطوة."
+                                    data-en="A team ready to support you at every step.">
+                                    فريق جاهز لمساعدتك في كل خطوة.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="why-visual reveal">
+
+                    <div class="world-card">
+
+                        <div class="world-circle">
+
+                            <i class="fa-solid fa-earth-americas"></i>
+
+                        </div>
+
+                        <div class="route route-one"></div>
+                        <div class="route route-two"></div>
+                        <div class="route route-three"></div>
+
+                        <div class="location location-one">
+                            <span></span>
+                        </div>
+
+                        <div class="location location-two">
+                            <span></span>
+                        </div>
+
+                        <div class="location location-three">
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PROCESS
+        ========================== -->
+
+        <section class="section process" id="process">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <span class="section-label"
+                          data-ar="آلية العمل"
+                          data-en="HOW WE WORK">
+                        آلية العمل
+                    </span>
+
+                    <h2
+                        data-ar="من الطلب إلى الوصول"
+                        data-en="From Request to Delivery">
+                        من الطلب إلى الوصول
+                    </h2>
+
+                    <p
+                        data-ar="نجعل عملية التجارة أكثر وضوحاً من خلال خطوات منظمة ومدروسة."
+                        data-en="We make the trading process clearer through structured and carefully managed steps.">
+                        نجعل عملية التجارة أكثر وضوحاً من خلال خطوات منظمة ومدروسة.
+                    </p>
+
+                </div>
+
+
+                <div class="process-grid">
+
+                    <div class="process-item reveal">
+
+                        <div class="process-number">01</div>
+
+                        <i class="fa-solid fa-comments"></i>
+
+                        <h3
+                            data-ar="استلام الطلب"
+                            data-en="Request">
+                            استلام الطلب
+                        </h3>
+
+                        <p
+                            data-ar="نفهم احتياجاتك ومتطلباتك التجارية."
+                            data-en="We understand your business requirements.">
+                            نفهم احتياجاتك ومتطلباتك التجارية.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-line"></div>
+
+
+                    <div class="process-item reveal">
+
+                        <div class="process-number">02</div>
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <h3
+                            data-ar="البحث والتوريد"
+                            data-en="Sourcing">
+                            البحث والتوريد
+                        </h3>
+
+                        <p
+                            data-ar="نبحث عن الموردين والمنتجات المناسبة."
+                            data-en="We find suitable suppliers and products.">
+                            نبحث عن الموردين والمنتجات المناسبة.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-line"></div>
+
+
+                    <div class="process-item reveal">
+
+                        <div class="process-number">03</div>
+
+                        <i class="fa-solid fa-file-signature"></i>
+
+                        <h3
+                            data-ar="التنسيق"
+                            data-en="Coordination">
+                            التنسيق
+                        </h3>
+
+                        <p
+                            data-ar="ننسق الإجراءات والتجهيزات المطلوبة."
+                            data-en="We coordinate the required procedures.">
+                            ننسق الإجراءات والتجهيزات المطلوبة.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-line"></div>
+
+
+                    <div class="process-item reveal">
+
+                        <div class="process-number">04</div>
+
+                        <i class="fa-solid fa-truck-fast"></i>
+
+                        <h3
+                            data-ar="التسليم"
+                            data-en="Delivery">
+                            التسليم
+                        </h3>
+
+                        <p
+                            data-ar="متابعة الشحنة حتى وصولها إلى وجهتها."
+                            data-en="Tracking the shipment until delivery.">
+                            متابعة الشحنة حتى وصولها إلى وجهتها.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+
+        <section class="cta">
+
+            <div class="container cta-content reveal">
+
+                <div>
+
+                    <span class="section-label"
+                          data-ar="جاهزون للتعاون"
+                          data-en="READY TO WORK TOGETHER">
+                        جاهزون للتعاون
+                    </span>
+
+                    <h2
+                        data-ar="لنبني فرصتك التجارية القادمة"
+                        data-en="Let's Build Your Next Business Opportunity">
+                        لنبني فرصتك التجارية القادمة
+                    </h2>
+
+                    <p
+                        data-ar="أخبرنا باحتياجاتك وسيساعدك فريق آفاق في إيجاد الحل المناسب."
+                        data-en="Tell us what you need and the AFAQ team will help you find the right solution.">
+                        أخبرنا باحتياجاتك وسيساعدك فريق آفاق في إيجاد الحل المناسب.
+                    </p>
+
+                </div>
+
+
+                <a href="#contact" class="btn btn-light">
+
+                    <span
+                        data-ar="تواصل معنا الآن"
+                        data-en="Contact Us Now">
+                        تواصل معنا الآن
+                    </span>
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section class="section contact" id="contact">
+
+            <div class="container contact-grid">
+
+                <div class="contact-info reveal">
+
+                    <span class="section-label"
+                          data-ar="تواصل معنا"
+                          data-en="CONTACT US">
+                        تواصل معنا
+                    </span>
+
+                    <h2
+                        data-ar="دعنا نتحدث عن فرصتك القادمة"
+                        data-en="Let's Talk About Your Next Opportunity">
+                        دعنا نتحدث عن فرصتك القادمة
+                    </h2>
+
+                    <p
+                        data-ar="سواء كنت تبحث عن مورد أو ترغب في تصدير منتجاتك، فريقنا جاهز للتواصل معك."
+                        data-en="Whether you're looking for a supplier or want to export your products, our team is ready to help.">
+                        سواء كنت تبحث عن مورد أو ترغب في تصدير منتجاتك، فريقنا جاهز للتواصل معك.
+                    </p>
+
+
+                    <div class="contact-details">
+
+                        <div class="contact-detail">
+
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+
+                            <div>
+                                <span
+                                    data-ar="الهاتف"
+                                    data-en="Phone">
+                                    الهاتف
+                                </span>
+
+                                <strong dir="ltr">
+                                    +249 XXX XXX XXX
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-detail">
+
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+
+                            <div>
+                                <span
+                                    data-ar="البريد الإلكتروني"
+                                    data-en="Email">
+                                    البريد الإلكتروني
+                                </span>
+
+                                <strong>
+                                    info@afaq.com
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-detail">
+
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+
+                            <div>
+                                <span
+                                    data-ar="الموقع"
+                                    data-en="Location">
+                                    الموقع
+                                </span>
+
+                                <strong
+                                    data-ar="السودان"
+                                    data-en="Sudan">
+                                    السودان
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="social-links">
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+
+                        <a href="#" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <form class="contact-form reveal" id="contactForm">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label
+                                data-ar="الاسم"
+                                data-en="Name">
+                                الاسم
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="اسمك"
+                                data-placeholder-ar="اسمك"
+                                data-placeholder-en="Your name"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                data-ar="البريد الإلكتروني"
+                                data-en="Email">
+                                البريد الإلكتروني
+                            </label>
+
+                            <input
+                                type="email"
+                                placeholder="البريد الإلكتروني"
+                                data-placeholder-ar="البريد الإلكتروني"
+                                data-placeholder-en="Email address"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            data-ar="رقم الهاتف"
+                            data-en="Phone">
+                            رقم الهاتف
+                        </label>
+
+                        <input
+                            type="tel"
+                            placeholder="رقم الهاتف"
+                            data-placeholder-ar="رقم الهاتف"
+                            data-placeholder-en="Phone number">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            data-ar="الخدمة المطلوبة"
+                            data-en="Required Service">
+                            الخدمة المطلوبة
+                        </label>
+
+                        <select id="serviceSelect">
+
+                            <option
+                                value=""
+                                data-ar="اختر الخدمة"
+                                data-en="Select a service">
+                                اختر الخدمة
+                            </option>
+
+                            <option
+                                data-ar="استيراد"
+                                data-en="Import">
+                                استيراد
+                            </option>
+
+                            <option
+                                data-ar="تصدير"
+                                data-en="Export">
+                                تصدير
+                            </option>
+
+                            <option
+                                data-ar="خدمات لوجستية"
+                                data-en="Logistics">
+                                خدمات لوجستية
+                            </option>
+
+                            <option
+                                data-ar="وساطة تجارية"
+                                data-en="Trade Brokerage">
+                                وساطة تجارية
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            data-ar="رسالتك"
+                            data-en="Message">
+                            رسالتك
+                        </label>
+
+                        <textarea
+                            rows="5"
+                            placeholder="اكتب رسالتك هنا..."
+                            data-placeholder-ar="اكتب رسالتك هنا..."
+                            data-placeholder-en="Write your message here..."
+                            required></textarea>
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary submit-btn">
+
+                        <span
+                            data-ar="إرسال الرسالة"
+                            data-en="Send Message">
+                            إرسال الرسالة
+                        </span>
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                    </button>
+
+
+                    <div class="form-message" id="formMessage"></div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="#home" class="logo">
+
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+
+                    <div class="logo-text">
+
+                        <strong>آفاق</strong>
+
+                        <span
+                            data-ar="للاستيراد والتصدير"
+                            data-en="Import & Export">
+                            للاستيراد والتصدير
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <p
+                    data-ar="نفتح لك آفاقاً جديدة في عالم التجارة الدولية."
+                    data-en="Opening new horizons for you in international trade.">
+                    نفتح لك آفاقاً جديدة في عالم التجارة الدولية.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4
+                    data-ar="روابط سريعة"
+                    data-en="Quick Links">
+                    روابط سريعة
+                </h4>
+
+                <a href="#home"
+                   data-ar="الرئيسية"
+                   data-en="Home">
+                    الرئيسية
+                </a>
+
+                <a href="#about"
+                   data-ar="من نحن"
+                   data-en="About Us">
+                    من نحن
+                </a>
+
+                <a href="#services"
+                   data-ar="خدماتنا"
+                   data-en="Services">
+                    خدماتنا
+                </a>
+
+                <a href="#contact"
+                   data-ar="تواصل معنا"
+                   data-en="Contact">
+                    تواصل معنا
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4
+                    data-ar="خدماتنا"
+                    data-en="Services">
+                    خدماتنا
+                </h4>
+
+                <a href="#services"
+                   data-ar="الاستيراد"
+                   data-en="Import">
+                    الاستيراد
+                </a>
+
+                <a href="#services"
+                   data-ar="التصدير"
+                   data-en="Export">
+                    التصدير
+                </a>
+
+                <a href="#services"
+                   data-ar="الخدمات اللوجستية"
+                   data-en="Logistics">
+                    الخدمات اللوجستية
+                </a>
+
+                <a href="#services"
+                   data-ar="الوساطة التجارية"
+                   data-en="Trade Brokerage">
+                    الوساطة التجارية
+                </a>
+
+            </div>
+
+
+            <div class="footer-newsletter">
+
+                <h4
+                    data-ar="ابقَ على تواصل"
+                    data-en="Stay Connected">
+                    ابقَ على تواصل
+                </h4>
+
+                <p
+                    data-ar="تابع آخر أخبارنا وفرصنا التجارية."
+                    data-en="Follow our latest news and business opportunities.">
+                    تابع آخر أخبارنا وفرصنا التجارية.
+                </p>
+
+                <div class="newsletter">
+
+                    <input
+                        type="email"
+                        placeholder="بريدك الإلكتروني"
+                        data-placeholder-ar="بريدك الإلكتروني"
+                        data-placeholder-en="Your email">
+
+                    <button>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    © <span id="year"></span>
+                    <span
+                        data-ar="آفاق للاستيراد والتصدير. جميع الحقوق محفوظة."
+                        data-en="AFAQ Import & Export. All rights reserved.">
+                        آفاق للاستيراد والتصدير. جميع الحقوق محفوظة.
+                    </span>
+                </p>
+
+                <span
+                    data-ar="صنع بشغف"
+                    data-en="Made with passion">
+                    صنع بشغف
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Back To Top -->
+
+    <button class="back-top" id="backTop">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        /* =========================================================
+   AFAQ IMPORT & EXPORT
+   Main JavaScript
+========================================================= */
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+
+    /* =====================================================
+       PRELOADER
+    ===================================================== */
+
+    const preloader = document.getElementById("preloader");
+
+    window.addEventListener("load", () => {
+
+        setTimeout(() => {
+
+            preloader.classList.add("hide");
+
+        }, 700);
+
+    });
+
+
+
+    /* =====================================================
+       HEADER SCROLL
+    ===================================================== */
+
+    const header = document.getElementById("header");
+
+    function handleHeader() {
+
+        if (window.scrollY > 50) {
+
+            header.classList.add("scrolled");
+
+        } else {
+
+            header.classList.remove("scrolled");
+
+        }
+
+    }
+
+    window.addEventListener("scroll", handleHeader);
+
+    handleHeader();
+
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuBtn = document.getElementById("menuBtn");
+
+    const nav = document.getElementById("nav");
+
+    menuBtn.addEventListener("click", () => {
+
+        nav.classList.toggle("open");
+
+        const icon = menuBtn.querySelector("i");
+
+        if (nav.classList.contains("open")) {
+
+            icon.classList.remove("fa-bars");
+
+            icon.classList.add("fa-xmark");
+
+        } else {
+
+            icon.classList.remove("fa-xmark");
+
+            icon.classList.add("fa-bars");
+
+        }
+
+    });
+
+
+
+    /* Close menu after clicking */
+
+    document.querySelectorAll(".nav-link").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            nav.classList.remove("open");
+
+            const icon = menuBtn.querySelector("i");
+
+            icon.classList.remove("fa-xmark");
+
+            icon.classList.add("fa-bars");
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
+
+    const sections = document.querySelectorAll("section[id]");
+
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function updateActiveLink() {
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - 150;
+
+            if (window.scrollY >= sectionTop) {
+
+                current = section.getAttribute("id");
+
+            }
+
+        });
+
+        navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+            if (
+                link.getAttribute("href") === `#${current}`
+            ) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+    window.addEventListener("scroll", updateActiveLink);
+
+
+
+    /* =====================================================
+       REVEAL ANIMATION
+    ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+
+    /* =====================================================
+       COUNTERS
+    ===================================================== */
+
+    const counters =
+        document.querySelectorAll(".counter");
+
+    let countersStarted = false;
+
+
+    function startCounters() {
+
+        if (countersStarted) return;
+
+        countersStarted = true;
+
+
+        counters.forEach(counter => {
+
+            const target =
+                Number(counter.dataset.target);
+
+            let current = 0;
+
+            const duration = 1600;
+
+            const increment =
+                target / (duration / 16);
+
+
+            function updateCounter() {
+
+                current += increment;
+
+
+                if (current < target) {
+
+                    counter.textContent =
+                        Math.floor(current);
+
+                    requestAnimationFrame(updateCounter);
+
+                } else {
+
+                    counter.textContent = target;
+
+                }
+
+            }
+
+
+            updateCounter();
+
+        });
+
+    }
+
+
+    const statsSection =
+        document.querySelector(".stats");
+
+
+    const counterObserver =
+        new IntersectionObserver(
+            entries => {
+
+                if (entries[0].isIntersecting) {
+
+                    startCounters();
+
+                    counterObserver.disconnect();
+
+                }
+
+            },
+            {
+                threshold: 0.4
+            }
+        );
+
+
+    counterObserver.observe(statsSection);
+
+
+
+    /* =====================================================
+       DARK MODE
+    ===================================================== */
+
+    const themeBtn =
+        document.getElementById("themeBtn");
+
+
+    const savedTheme =
+        localStorage.getItem("afaq-theme");
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+
+        themeBtn.innerHTML =
+            '<i class="fa-solid fa-sun"></i>';
+
+    }
+
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+
+        const isDark =
+            document.body.classList.contains("dark");
+
+
+        localStorage.setItem(
+            "afaq-theme",
+            isDark ? "dark" : "light"
+        );
+
+
+        themeBtn.innerHTML = isDark
+
+            ? '<i class="fa-solid fa-sun"></i>'
+
+            : '<i class="fa-solid fa-moon"></i>';
+
+    });
+
+
+
+    /* =====================================================
+       LANGUAGE SWITCH
+    ===================================================== */
+
+    const languageBtn =
+        document.getElementById("languageBtn");
+
+    const languageText =
+        document.getElementById("languageText");
+
+
+    let currentLanguage =
+        localStorage.getItem("afaq-language") || "ar";
+
+
+    function setLanguage(language) {
+
+        currentLanguage = language;
+
+
+        const isEnglish =
+            language === "en";
+
+
+        document.body.classList.toggle(
+            "english",
+            isEnglish
+        );
+
+
+        document.documentElement.lang =
+            language;
+
+
+        document.documentElement.dir =
+            isEnglish ? "ltr" : "rtl";
+
+
+        /* Text */
+
+        document.querySelectorAll(
+            "[data-ar][data-en]"
+        ).forEach(element => {
+
+            element.textContent =
+                isEnglish
+                    ? element.dataset.en
+                    : element.dataset.ar;
+
+        });
+
+
+        /* Placeholders */
+
+        document.querySelectorAll(
+            "[data-placeholder-ar]"
+        ).forEach(element => {
+
+            element.placeholder =
+                isEnglish
+                    ? element.dataset.placeholderEn
+                    : element.dataset.placeholderAr;
+
+        });
+
+
+        /* Select options */
+
+        document.querySelectorAll(
+            "option[data-ar]"
+        ).forEach(option => {
+
+            option.textContent =
+                isEnglish
+                    ? option.dataset.en
+                    : option.dataset.ar;
+
+        });
+
+
+        languageText.textContent =
+            isEnglish ? "AR" : "EN";
+
+
+        localStorage.setItem(
+            "afaq-language",
+            language
+        );
+
+    }
+
+
+    languageBtn.addEventListener("click", () => {
+
+        setLanguage(
+            currentLanguage === "ar"
+                ? "en"
+                : "ar"
+        );
+
+    });
+
+
+    setLanguage(currentLanguage);
+
+
+
+    /* =====================================================
+       CONTACT FORM
+    ===================================================== */
+
+    const contactForm =
+        document.getElementById("contactForm");
+
+
+    const formMessage =
+        document.getElementById("formMessage");
+
+
+    contactForm.addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
+
+
+            const isEnglish =
+                currentLanguage === "en";
+
+
+            formMessage.style.color =
+                "var(--primary)";
+
+
+            formMessage.textContent =
+                isEnglish
+                    ? "Thank you! Your message has been received."
+                    : "شكراً لك! تم استلام رسالتك بنجاح.";
+
+
+            contactForm.reset();
+
+
+            setTimeout(() => {
+
+                formMessage.textContent = "";
+
+            }, 5000);
+
+        }
+    );
+
+
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    const backTop =
+        document.getElementById("backTop");
+
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 500) {
+
+            backTop.classList.add("show");
+
+        } else {
+
+            backTop.classList.remove("show");
+
+        }
+
+    });
+
+
+    backTop.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+
+
+    /* =====================================================
+       CURRENT YEAR
+    ===================================================== */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+
+    /* =====================================================
+       NEWSLETTER
+    ===================================================== */
+
+    const newsletter =
+        document.querySelector(".newsletter");
+
+
+    if (newsletter) {
+
+        newsletter
+            .querySelector("button")
+            .addEventListener("click", () => {
+
+                const input =
+                    newsletter.querySelector("input");
+
+
+                const isEnglish =
+                    currentLanguage === "en";
+
+
+                if (!input.value.trim()) {
+
+                    input.focus();
+
+                    return;
+
+                }
+
+
+                input.value = "";
+
+
+                alert(
+                    isEnglish
+                        ? "Thank you for subscribing!"
+                        : "شكراً لاشتراكك معنا!"
+                );
+
+            });
+
+    }
+
+
+
+    /* =====================================================
+       SMOOTH SCROLL
+    ===================================================== */
+
+    document.querySelectorAll(
+        'a[href^="#"]'
+    ).forEach(anchor => {
+
+        anchor.addEventListener(
+            "click",
+            function (event) {
+
+                const target =
+                    document.querySelector(
+                        this.getAttribute("href")
+                    );
+
+
+                if (!target) return;
+
+
+                event.preventDefault();
+
+
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+    });
+
+});
+    </script>
+
 </body>
 </html>
